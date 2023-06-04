@@ -78,9 +78,6 @@
     <ClInclude Include="Tutorial-RasterTek-InputSound-Src\timerclass.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
-    <ClInclude Include="DDSTextureLoader11.h">
-      <Filter>소스 파일</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Tutorial-RasterTek-InputSound-Src\bitmapclass.cpp">
@@ -144,9 +141,6 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Tutorial-RasterTek-InputSound-Src\timerclass.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="DDSTextureLoader11.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
