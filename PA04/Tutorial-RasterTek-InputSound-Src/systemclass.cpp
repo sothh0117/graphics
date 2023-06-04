@@ -13,7 +13,7 @@ SystemClass::SystemClass()
 	m_Timer = 0;
 	m_Sound = 0;
 	position_camera_x = 0.0f;
-	position_camera_y = 0.0f;
+	position_camera_y = 50.0f;
 	position_camera_z = -70.0f;
 }
 
