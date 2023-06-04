@@ -203,7 +203,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Initialize the bitmap object.
-	result = m_Bitmap->Initialize(m_D3D->GetDevice(), screenWidth, screenHeight, L"./data/seafloor.dds", 256, 256);
+	result = m_Bitmap->Initialize(m_D3D->GetDevice(), screenWidth, screenHeight, L"./data/sky.dds", 1024, 512);
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the bitmap object.", L"Error", MB_OK);
@@ -350,7 +350,7 @@ bool GraphicsClass::Frame()
 	return true;
 }
 
-bool GraphicsClass::Frame(int fps, int cpu, int mouseX, int mouseY)
+bool GraphicsClass::Frame(int fps, int cpu)
 {
 	bool result;
 	static float rotation = 0.0f;
@@ -377,11 +377,7 @@ bool GraphicsClass::Frame(int fps, int cpu, int mouseX, int mouseY)
 	}
 
 	// Set the location of the mouse.
-	result = m_Text->SetMousePosition(mouseX, mouseY, m_D3D->GetDeviceContext());
-	if (!result)
-	{
-		return false;
-	}
+	
 
 	// Render the graphics scene.
 	result = Render(rotation);
@@ -483,8 +479,8 @@ bool GraphicsClass::Render(float rotation)
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_4->GetIndexCount(),
 		worldMatrix, viewMatrix, projectionMatrix,
 		m_Model_4->GetTexture(),
-		m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
-		m_Camera->GetPosition(), m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
+		m_Light_1->GetDirection(), m_Light_1->GetAmbientColor(), m_Light_1->GetDiffuseColor(),
+		m_Camera->GetPosition(), m_Light_1->GetSpecularColor(), m_Light_1->GetSpecularPower());
 	
 	if(!result)
 	{

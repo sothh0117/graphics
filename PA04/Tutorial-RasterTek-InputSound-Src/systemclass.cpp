@@ -13,7 +13,7 @@ SystemClass::SystemClass()
 	m_Timer = 0;
 	m_Sound = 0;
 	position_camera_x = 0.0f;
-	position_camera_y = 10.0f;
+	position_camera_y = 0.0f;
 	position_camera_z = -70.0f;
 }
 
@@ -231,6 +231,7 @@ bool SystemClass::Frame()
 {
 	bool result;
 	int mouseX, mouseY;
+	float speed = 15.0f;
 
 	m_Timer->Frame();
 	m_Fps->Frame();
@@ -253,17 +254,40 @@ bool SystemClass::Frame()
 	m_Input->GetMouseLocation(mouseX, mouseY);
 
 	// Do the frame processing for the graphics object.
-	result = m_Graphics->Frame(m_Fps->GetFps(), m_Cpu->GetCpuPercentage(), mouseX, mouseY);
+	result = m_Graphics->Frame(m_Fps->GetFps(), m_Cpu->GetCpuPercentage());
 	if (!result)
 	{
 		return false;
 	}
+
 	if (m_Input->m_mouseState.lX != m_Input->m_mouseState_past.lX || m_Input->m_mouseState.lY != m_Input->m_mouseState_past.lY)
 	{
 		m_Graphics->m_Camera->yaw += m_Input->m_mouseState.lX * 0.0015f;
 		m_Graphics->m_Camera->pitch += m_Input->m_mouseState.lY * 0.0015f;
 		m_Input->m_mouseState_past = m_Input->m_mouseState;
 		m_Graphics->m_Camera->Render();
+	}
+	if (m_Input->m_keyboardState[DIK_A] & 0x80)
+	{
+		//m_Graphics->m_Camera->moveLeftRight -= speed;
+		position_camera_x -= 1.0f;
+		m_Graphics->m_Camera->SetPosition(position_camera_x, position_camera_y, position_camera_z);
+		m_Graphics->m_Camera->Render();
+	}
+	if (m_Input->m_keyboardState[DIK_D] & 0x80)
+	{
+		position_camera_x += 1.0f;
+		m_Graphics->m_Camera->SetPosition(position_camera_x, position_camera_y, position_camera_z);
+	}
+	if (m_Input->m_keyboardState[DIK_W] & 0x80)
+	{
+		position_camera_z += 1.0f;
+		m_Graphics->m_Camera->SetPosition(position_camera_x, position_camera_y, position_camera_z);
+	}
+	if (m_Input->m_keyboardState[DIK_S] & 0x80)
+	{
+		position_camera_z -= 1.0f;
+		m_Graphics->m_Camera->SetPosition(position_camera_x, position_camera_y, position_camera_z);
 	}
 	return true;
 }

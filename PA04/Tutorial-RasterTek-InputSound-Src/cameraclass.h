@@ -34,7 +34,20 @@ public:
 	void GetViewMatrix(XMMATRIX&);
 
 	float yaw, pitch, roll;
+	/*
 	void UpdateCamera();
+	XMMATRIX camRotationMatrix;
+	XMVECTOR camTarget;
+	XMVECTOR camUp;
+	XMVECTOR camPosition;
+	XMVECTOR DefaultForward = XMVectorSet(0.0f, 0.0f, 1.0f, 0.0f);
+	XMVECTOR DefaultRight = XMVectorSet(1.0f, 0.0f, 0.0f, 0.0f);
+	XMVECTOR camRight = XMVectorSet(1.0f, 0.0f, 0.0f, 0.0f);
+	XMVECTOR camForward = XMVectorSet(0.0f, 0.0f, 1.0f, 0.0f);
+	XMMATRIX camView;
+
+	float moveLeftRight, moveBackForward = 0.0f;*/
+
 private:
 	XMFLOAT3 m_position;
 	XMFLOAT3 m_rotation;

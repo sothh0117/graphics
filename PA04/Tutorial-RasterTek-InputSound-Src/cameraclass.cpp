@@ -89,15 +89,35 @@ void CameraClass::Render()
 
 	// Finally create the view matrix from the three updated vectors.
 	m_viewMatrix = XMMatrixLookAtLH(position, lookAt, up);
+	//UpdateCamera();
 
 	return;
 }
-
+/*
 void CameraClass::UpdateCamera()
 {
+	camRotationMatrix = XMMatrixRotationRollPitchYaw(pitch, yaw, 0);
+	
+	camTarget = XMVector3TransformCoord(DefaultForward, camRotationMatrix);
+	camTarget = XMVector3Normalize(camTarget);
 
+	XMMATRIX RotateYTempMatrix;
+	RotateYTempMatrix = XMMatrixRotationY(yaw);
+
+	camRight = XMVector3TransformCoord(DefaultRight, RotateYTempMatrix);
+	camUp = XMVector3TransformCoord(camUp, RotateYTempMatrix);
+	camForward = XMVector3TransformCoord(DefaultForward, RotateYTempMatrix);
+
+	camPosition += moveLeftRight * camRight;
+	camPosition += moveBackForward * camForward;
+
+	moveLeftRight = 0.0f;
+	moveBackForward = 0.0f;
+
+	camTarget = camPosition + camTarget;
+	camView = XMMatrixLookAtLH(camPosition, camTarget, camUp);
 }
-
+*/
 
 void CameraClass::GetViewMatrix(XMMATRIX& viewMatrix)
 {

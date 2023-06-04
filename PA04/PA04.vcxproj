@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DDSTextureLoader11.h" />
     <ClInclude Include="Tutorial-RasterTek-InputSound-Src\AlignedAllocationPolicy.h" />
     <ClInclude Include="Tutorial-RasterTek-InputSound-Src\bitmapclass.h" />
     <ClInclude Include="Tutorial-RasterTek-InputSound-Src\cameraclass.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Tutorial-RasterTek-InputSound-Src\timerclass.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DDSTextureLoader11.cpp" />
     <ClCompile Include="Tutorial-RasterTek-InputSound-Src\bitmapclass.cpp" />
     <ClCompile Include="Tutorial-RasterTek-InputSound-Src\cameraclass.cpp" />
     <ClCompile Include="Tutorial-RasterTek-InputSound-Src\colorshaderclass.cpp" />
