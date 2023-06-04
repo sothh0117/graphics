@@ -33,6 +33,8 @@ public:
 	void Render();
 	void GetViewMatrix(XMMATRIX&);
 
+	float yaw, pitch, roll;
+	void UpdateCamera();
 private:
 	XMFLOAT3 m_position;
 	XMFLOAT3 m_rotation;

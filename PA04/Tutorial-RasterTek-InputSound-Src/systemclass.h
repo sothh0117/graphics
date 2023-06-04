@@ -41,6 +41,9 @@ public:
 	void Shutdown();
 	void Run();
 
+	bool Isambient, Isdiffuse, Isspecular;
+	float position_camera_x, position_camera_y, position_camera_z;
+
 	LRESULT CALLBACK MessageHandler(HWND, UINT, WPARAM, LPARAM);
 
 private:

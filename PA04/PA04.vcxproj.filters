@@ -14,4 +14,134 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\AlignedAllocationPolicy.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\bitmapclass.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\cameraclass.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\colorshaderclass.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\cpuclass.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\d3dclass.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\DDSTextureLoader.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\fontclass.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\fontshaderclass.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\fpsclass.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\graphicsclass.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\inputclass.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\lightclass.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\lightshaderclass.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\modelclass.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\soundclass.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\systemclass.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\textclass.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\textureclass.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\textureshaderclass.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\timerclass.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\bitmapclass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\cameraclass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\colorshaderclass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\cpuclass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\d3dclass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\DDSTextureLoader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\fontclass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\fontshaderclass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\fpsclass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\graphicsclass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\inputclass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\lightclass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\lightshaderclass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\modelclass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\soundclass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\systemclass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\textclass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\textureclass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\textureshaderclass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\timerclass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>

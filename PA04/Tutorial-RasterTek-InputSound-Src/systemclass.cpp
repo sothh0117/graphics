@@ -12,6 +12,9 @@ SystemClass::SystemClass()
 	m_Cpu = 0;
 	m_Timer = 0;
 	m_Sound = 0;
+	position_camera_x = 0.0f;
+	position_camera_y = 10.0f;
+	position_camera_z = -70.0f;
 }
 
 
@@ -255,7 +258,13 @@ bool SystemClass::Frame()
 	{
 		return false;
 	}
-	
+	if (m_Input->m_mouseState.lX != m_Input->m_mouseState_past.lX || m_Input->m_mouseState.lY != m_Input->m_mouseState_past.lY)
+	{
+		m_Graphics->m_Camera->yaw += m_Input->m_mouseState.lX * 0.0015f;
+		m_Graphics->m_Camera->pitch += m_Input->m_mouseState.lY * 0.0015f;
+		m_Input->m_mouseState_past = m_Input->m_mouseState;
+		m_Graphics->m_Camera->Render();
+	}
 	return true;
 }
 

@@ -17,7 +17,6 @@
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -53,25 +52,23 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Label="Shared" >
+  <ImportGroup Label="Shared">
   </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -85,7 +82,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
-
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -94,7 +90,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -108,7 +104,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -142,8 +138,52 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-
-  <ItemGroup></ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\AlignedAllocationPolicy.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\bitmapclass.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\cameraclass.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\colorshaderclass.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\cpuclass.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\d3dclass.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\DDSTextureLoader.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\fontclass.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\fontshaderclass.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\fpsclass.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\graphicsclass.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\inputclass.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\lightclass.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\lightshaderclass.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\modelclass.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\soundclass.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\systemclass.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\textclass.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\textureclass.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\textureshaderclass.h" />
+    <ClInclude Include="Tutorial-RasterTek-InputSound-Src\timerclass.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\bitmapclass.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\cameraclass.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\colorshaderclass.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\cpuclass.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\d3dclass.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\DDSTextureLoader.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\fontclass.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\fontshaderclass.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\fpsclass.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\graphicsclass.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\inputclass.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\lightclass.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\lightshaderclass.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\main.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\modelclass.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\soundclass.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\systemclass.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\textclass.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\textureclass.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\textureshaderclass.cpp" />
+    <ClCompile Include="Tutorial-RasterTek-InputSound-Src\timerclass.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

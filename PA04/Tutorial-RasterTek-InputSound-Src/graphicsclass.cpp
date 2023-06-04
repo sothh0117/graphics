@@ -9,9 +9,14 @@ GraphicsClass::GraphicsClass()
 	m_D3D = 0;
 	m_Camera = 0;
 	m_Model = 0;
+	m_Model_1 = 0;
+	m_Model_2 = 0;
+	m_Model_3 = 0;
+	m_Model_4 = 0;
 
 	m_LightShader = 0;
 	m_Light = 0;
+	m_Light_1 = 0;
 
 	m_TextureShader = 0;
 	m_Bitmap = 0;
@@ -59,8 +64,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Set the initial position of the camera.
-	m_Camera->SetPosition(0.0f, 0.0f, -5.0f);	// for cube
-//	m_Camera->SetPosition(0.0f, 0.5f, -3.0f);	// for chair
+	m_Camera->SetPosition(0.0f, 10.0f, -70.0f);
 		
 	// Create the model object.
 	m_Model = new ModelClass;
@@ -70,11 +74,66 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Initialize the model object.
-	result = m_Model->Initialize(m_D3D->GetDevice(), L"./data/cube.obj", L"./data/seafloor.dds");
-//	result = m_Model->Initialize(m_D3D->GetDevice(), L"./data/chair.obj", L"./data/chair_d.dds");
+	result = m_Model->Initialize(m_D3D->GetDevice(), L"./data/mount.obj", L"./data/grass.dds");
 	if(!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model object.", L"Error", MB_OK);
+		return false;
+	}
+
+	m_Model_1 = new ModelClass;
+	if (!m_Model_1)
+	{
+		return false;
+	}
+
+	// Initialize the model object.
+	result = m_Model_1->Initialize(m_D3D->GetDevice(), L"./data/tree1.obj", L"./data/grass.dds");
+	if (!result)
+	{
+		MessageBox(hwnd, L"Could not initialize the model_1 object.", L"Error", MB_OK);
+		return false;
+	}
+
+	m_Model_2 = new ModelClass;
+	if (!m_Model_2)
+	{
+		return false;
+	}
+
+	// Initialize the model object.
+	result = m_Model_2->Initialize(m_D3D->GetDevice(), L"./data/tree2.obj", L"./data/grass.dds");
+	if (!result)
+	{
+		MessageBox(hwnd, L"Could not initialize the model_2 object.", L"Error", MB_OK);
+		return false;
+	}
+
+	m_Model_3 = new ModelClass;
+	if (!m_Model_3)
+	{
+		return false;
+	}
+
+	// Initialize the model object.
+	result = m_Model_3->Initialize(m_D3D->GetDevice(), L"./data/tree3.obj", L"./data/grass.dds");
+	if (!result)
+	{
+		MessageBox(hwnd, L"Could not initialize the model_3 object.", L"Error", MB_OK);
+		return false;
+	}
+
+	m_Model_4 = new ModelClass;
+	if (!m_Model_4)
+	{
+		return false;
+	}
+
+	// Initialize the model object.
+	result = m_Model_4->Initialize(m_D3D->GetDevice(), L"./data/cube.obj", L"./data/seafloor.dds");
+	if (!result)
+	{
+		MessageBox(hwnd, L"Could not initialize the model_4 object.", L"Error", MB_OK);
 		return false;
 	}
 
@@ -102,14 +161,23 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 
 	// Initialize the light object.
 	m_Light->SetAmbientColor(0.15f, 0.15f, 0.15f, 1.0f);
-//	m_Light->SetAmbientColor(0.0f, 0.0f, 0.0f, 1.0f);
 	m_Light->SetDiffuseColor(1.0f, 1.0f, 1.0f, 1.0f);
-//	m_Light->SetDiffuseColor(0.0f, 0.0f, 0.0f, 1.0f);
-//	m_Light->SetDirection(0.0f, 0.0f, 1.0f);
-//	m_Light->SetDirection(1.0f, 0.0f, 0.0f);
 	m_Light->SetDirection(1.0f, 0.0f, 1.0f);
 	m_Light->SetSpecularColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_Light->SetSpecularPower(32.0f);
+
+	m_Light_1 = new LightClass;
+	if (!m_Light_1)
+	{
+		return false;
+	}
+
+	// Initialize the light object.
+	m_Light_1->SetAmbientColor(0.15f, 0.15f, 0.15f, 1.0f);
+	m_Light_1->SetDiffuseColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_Light_1->SetDirection(1.0f, 0.0f, 1.0f);
+	m_Light_1->SetSpecularColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_Light_1->SetSpecularPower(32.0f);
 
 	// Create the texture shader object.
 	m_TextureShader = new TextureShaderClass;
@@ -176,6 +244,34 @@ void GraphicsClass::Shutdown()
 		m_Model = 0;
 	}
 
+	if (m_Model_1)
+	{
+		m_Model_1->Shutdown();
+		delete m_Model_1;
+		m_Model_1 = 0;
+	}
+
+	if (m_Model_2)
+	{
+		m_Model_2->Shutdown();
+		delete m_Model_2;
+		m_Model_2 = 0;
+	}
+
+	if (m_Model_3)
+	{
+		m_Model_3->Shutdown();
+		delete m_Model_3;
+		m_Model_3 = 0;
+	}
+
+	if (m_Model_4)
+	{
+		m_Model_4->Shutdown();
+		delete m_Model_4;
+		m_Model_4 = 0;
+	}
+
 	// Release the camera object.
 	if(m_Camera)
 	{
@@ -196,6 +292,11 @@ void GraphicsClass::Shutdown()
 	{
 		delete m_Light;
 		m_Light = 0;
+	}
+	if (m_Light_1)
+	{
+		delete m_Light_1;
+		m_Light_1 = 0;
 	}
 
 	// Release the light shader object.
@@ -347,15 +448,41 @@ bool GraphicsClass::Render(float rotation)
 	m_D3D->TurnZBufferOn();
 
 	// Rotate the world matrix by the rotation value so that the triangle will spin.
-	worldMatrix = XMMatrixRotationY(rotation);
+	//worldMatrix = XMMatrixRotationY(rotation);
 
 	// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
 	m_Model->Render(m_D3D->GetDeviceContext());
-
-	// Render the model using the light shader.
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model->GetIndexCount(), 
 		worldMatrix, viewMatrix, projectionMatrix,
 		m_Model->GetTexture(), 
+		m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
+		m_Camera->GetPosition(), m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
+
+	m_Model_1->Render(m_D3D->GetDeviceContext());
+	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_1->GetIndexCount(),
+		worldMatrix, viewMatrix, projectionMatrix,
+		m_Model_1->GetTexture(),
+		m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
+		m_Camera->GetPosition(), m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
+
+	m_Model_2->Render(m_D3D->GetDeviceContext());
+	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_2->GetIndexCount(),
+		worldMatrix, viewMatrix, projectionMatrix,
+		m_Model_2->GetTexture(),
+		m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
+		m_Camera->GetPosition(), m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
+
+	m_Model_3->Render(m_D3D->GetDeviceContext());
+	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_3->GetIndexCount(),
+		worldMatrix, viewMatrix, projectionMatrix,
+		m_Model_3->GetTexture(),
+		m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
+		m_Camera->GetPosition(), m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
+
+	m_Model_4->Render(m_D3D->GetDeviceContext());
+	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_4->GetIndexCount(),
+		worldMatrix, viewMatrix, projectionMatrix,
+		m_Model_4->GetTexture(),
 		m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
 		m_Camera->GetPosition(), m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
 	

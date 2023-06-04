@@ -42,16 +42,23 @@ public:
 	bool Frame();
 	bool Frame(int, int, int, int);
 
+
+	LightClass* m_Light;
+	LightClass* m_Light_1;
+	CameraClass* m_Camera;
+
 private:
 	bool Render(float);
 
 private:
 	D3DClass* m_D3D;
-	CameraClass* m_Camera;
 	ModelClass* m_Model;
+	ModelClass* m_Model_1;
+	ModelClass* m_Model_2;
+	ModelClass* m_Model_3;
+	ModelClass* m_Model_4;
 
 	LightShaderClass* m_LightShader;
-	LightClass* m_Light;
 
 	TextureShaderClass* m_TextureShader;
 	BitmapClass* m_Bitmap;

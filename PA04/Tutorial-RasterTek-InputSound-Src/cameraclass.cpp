@@ -13,6 +13,10 @@ CameraClass::CameraClass()
 	m_rotation.x = 0.0f;
 	m_rotation.y = 0.0f;
 	m_rotation.z = 0.0f;
+
+	pitch = m_rotation.x * 0.0174532925f;
+	yaw = m_rotation.y * 0.0174532925f;
+	roll = m_rotation.z * 0.0174532925f;
 }
 
 
@@ -57,7 +61,6 @@ XMFLOAT3 CameraClass::GetRotation()
 void CameraClass::Render()
 {
 	XMVECTOR up, position, lookAt;
-	float yaw, pitch, roll;
 	XMMATRIX rotationMatrix;
 
 	// Setup the vector that points upwards.
@@ -70,9 +73,9 @@ void CameraClass::Render()
 	lookAt = XMVectorSet(0.0f, 0.0f, 1.0f, 0.0f);
 
 	// Set the yaw (Y axis), pitch (X axis), and roll (Z axis) rotations in radians.
-	pitch = m_rotation.x * 0.0174532925f;
-	yaw   = m_rotation.y * 0.0174532925f;
-	roll  = m_rotation.z * 0.0174532925f;
+//	pitch = m_rotation.x * 0.0174532925f;
+//	yaw   = m_rotation.y * 0.0174532925f;
+//	roll  = m_rotation.z * 0.0174532925f;
 
 	// Create the rotation matrix from the yaw, pitch, and roll values.
 	rotationMatrix = XMMatrixRotationRollPitchYaw(pitch, yaw, roll);
@@ -88,6 +91,11 @@ void CameraClass::Render()
 	m_viewMatrix = XMMatrixLookAtLH(position, lookAt, up);
 
 	return;
+}
+
+void CameraClass::UpdateCamera()
+{
+
 }
 
 
