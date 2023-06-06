@@ -289,6 +289,16 @@ bool SystemClass::Frame()
 		position_camera_z -= 1.0f;
 		m_Graphics->m_Camera->SetPosition(position_camera_x, position_camera_y, position_camera_z);
 	}
+	if (m_Input->m_keyboardState[DIK_Q] & 0x80)
+	{
+		position_camera_y += 1.0f;
+		m_Graphics->m_Camera->SetPosition(position_camera_x, position_camera_y, position_camera_z);
+	}
+	if (m_Input->m_keyboardState[DIK_E] & 0x80)
+	{
+		position_camera_y -= 1.0f;
+		m_Graphics->m_Camera->SetPosition(position_camera_x, position_camera_y, position_camera_z);
+	}
 	return true;
 }
 

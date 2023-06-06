@@ -625,7 +625,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 
 	// Initialize the light object.
 	m_Light_1->SetAmbientColor(0.15f, 0.15f, 0.15f, 1.0f);
-	m_Light_1->SetDiffuseColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_Light_1->SetDiffuseColor(0.0f, 1.0f, 0.0f, 1.0f);
 	m_Light_1->SetDirection(1.0f, 0.0f, 1.0f);
 	m_Light_1->SetSpecularColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_Light_1->SetSpecularPower(32.0f);
@@ -654,7 +654,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Initialize the bitmap object.
-	result = m_Bitmap->Initialize(m_D3D->GetDevice(), screenWidth, screenHeight, L"./data/grass.dds", 1024, 512);
+	result = m_Bitmap->Initialize(m_D3D->GetDevice(), screenWidth, screenHeight, L"./data/grass.dds", 256, 256);
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the bitmap object.", L"Error", MB_OK);
