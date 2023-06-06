@@ -45,6 +45,9 @@ public:
 
 	LightClass* m_Light;
 	LightClass* m_Light_1;
+	LightClass* m_Light_2;
+	LightClass* m_Light_3;
+	LightClass* m_Light_4;
 	CameraClass* m_Camera;
 
 private:
@@ -91,6 +94,8 @@ private:
 	ModelClass* m_Model_17u;
 	ModelClass* m_Model_18u;
 	ModelClass* m_Model_19u;
+	ModelClass* m_Model_cable;
+	ModelClass* m_Model_water;
 
 
 	LightShaderClass* m_LightShader;

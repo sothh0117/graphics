@@ -47,11 +47,16 @@ GraphicsClass::GraphicsClass()
 	m_Model_17u = 0;
 	m_Model_18u = 0;
 	m_Model_19u = 0;
+	m_Model_cable = 0;
+	m_Model_water = 0;
 	
 
 	m_LightShader = 0;
 	m_Light = 0;
 	m_Light_1 = 0;
+	m_Light_2 = 0;
+	m_Light_3 = 0;
+	m_Light_4 = 0;
 
 	m_TextureShader = 0;
 	m_Bitmap = 0;
@@ -165,7 +170,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Initialize the model object.
-	result = m_Model_4->Initialize(m_D3D->GetDevice(), L"./data/tree4_down.obj", L"./data/wood.dds");
+	result = m_Model_4->Initialize(m_D3D->GetDevice(), L"./data/tree4_down.obj", L"./data/tree.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_4 object.", L"Error", MB_OK);
@@ -201,7 +206,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
-	result = m_Model_7->Initialize(m_D3D->GetDevice(), L"./data/tree7_down.obj", L"./data/wood.dds");
+	result = m_Model_7->Initialize(m_D3D->GetDevice(), L"./data/tree7_down.obj", L"./data/tree.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_7 object.", L"Error", MB_OK);
@@ -237,7 +242,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
-	result = m_Model_10->Initialize(m_D3D->GetDevice(), L"./data/tree10_down.obj", L"./data/wood.dds");
+	result = m_Model_10->Initialize(m_D3D->GetDevice(), L"./data/tree10_down.obj", L"./data/tree.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_10 object.", L"Error", MB_OK);
@@ -285,7 +290,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
-	result = m_Model_14->Initialize(m_D3D->GetDevice(), L"./data/tree14_down.obj", L"./data/wood.dds");
+	result = m_Model_14->Initialize(m_D3D->GetDevice(), L"./data/tree14_down.obj", L"./data/tree.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_14 object.", L"Error", MB_OK);
@@ -359,7 +364,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Initialize the model object.
-	result = m_Model_1u->Initialize(m_D3D->GetDevice(), L"./data/tree1_up.obj", L"./data/leaves.dds");
+	result = m_Model_1u->Initialize(m_D3D->GetDevice(), L"./data/tree1_up.obj", L"./data/leaf.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_1u object.", L"Error", MB_OK);
@@ -373,7 +378,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Initialize the model object.
-	result = m_Model_2u->Initialize(m_D3D->GetDevice(), L"./data/tree2_up.obj", L"./data/grass.dds");
+	result = m_Model_2u->Initialize(m_D3D->GetDevice(), L"./data/tree2_up.obj", L"./data/leaves.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_2u object.", L"Error", MB_OK);
@@ -387,7 +392,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Initialize the model object.
-	result = m_Model_3u->Initialize(m_D3D->GetDevice(), L"./data/tree3_up.obj", L"./data/grass.dds");
+	result = m_Model_3u->Initialize(m_D3D->GetDevice(), L"./data/tree3_up.obj", L"./data/leaves.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_3u object.", L"Error", MB_OK);
@@ -401,7 +406,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Initialize the model object.
-	result = m_Model_4u->Initialize(m_D3D->GetDevice(), L"./data/tree4_up.obj", L"./data/grass.dds");
+	result = m_Model_4u->Initialize(m_D3D->GetDevice(), L"./data/tree4_up.obj", L"./data/leaves.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_4u object.", L"Error", MB_OK);
@@ -413,7 +418,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
-	result = m_Model_5u->Initialize(m_D3D->GetDevice(), L"./data/tree5_up.obj", L"./data/grass.dds");
+	result = m_Model_5u->Initialize(m_D3D->GetDevice(), L"./data/tree5_up.obj", L"./data/leaves.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_5u object.", L"Error", MB_OK);
@@ -425,7 +430,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
-	result = m_Model_6u->Initialize(m_D3D->GetDevice(), L"./data/tree6_up.obj", L"./data/grass.dds");
+	result = m_Model_6u->Initialize(m_D3D->GetDevice(), L"./data/tree6_up.obj", L"./data/leaf.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_6u object.", L"Error", MB_OK);
@@ -437,7 +442,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
-	result = m_Model_7u->Initialize(m_D3D->GetDevice(), L"./data/tree7_up.obj", L"./data/grass.dds");
+	result = m_Model_7u->Initialize(m_D3D->GetDevice(), L"./data/tree7_up.obj", L"./data/leaves.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_7u object.", L"Error", MB_OK);
@@ -449,7 +454,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
-	result = m_Model_8u->Initialize(m_D3D->GetDevice(), L"./data/tree8_up.obj", L"./data/grass.dds");
+	result = m_Model_8u->Initialize(m_D3D->GetDevice(), L"./data/tree8_up.obj", L"./data/leaves.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_8u object.", L"Error", MB_OK);
@@ -461,7 +466,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
-	result = m_Model_9u->Initialize(m_D3D->GetDevice(), L"./data/tree9_up.obj", L"./data/grass.dds");
+	result = m_Model_9u->Initialize(m_D3D->GetDevice(), L"./data/tree9_up.obj", L"./data/leaves.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_9u object.", L"Error", MB_OK);
@@ -473,7 +478,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
-	result = m_Model_10u->Initialize(m_D3D->GetDevice(), L"./data/tree10_up.obj", L"./data/grass.dds");
+	result = m_Model_10u->Initialize(m_D3D->GetDevice(), L"./data/tree10_up.obj", L"./data/leaves.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_10u object.", L"Error", MB_OK);
@@ -485,7 +490,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
-	result = m_Model_11u->Initialize(m_D3D->GetDevice(), L"./data/tree11_up.obj", L"./data/grass.dds");
+	result = m_Model_11u->Initialize(m_D3D->GetDevice(), L"./data/tree11_up.obj", L"./data/leaves.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_11u object.", L"Error", MB_OK);
@@ -497,7 +502,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
-	result = m_Model_12u->Initialize(m_D3D->GetDevice(), L"./data/tree12_up.obj", L"./data/grass.dds");
+	result = m_Model_12u->Initialize(m_D3D->GetDevice(), L"./data/tree12_up.obj", L"./data/leaves.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_12u object.", L"Error", MB_OK);
@@ -509,7 +514,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
-	result = m_Model_13u->Initialize(m_D3D->GetDevice(), L"./data/tree13_up.obj", L"./data/grass.dds");
+	result = m_Model_13u->Initialize(m_D3D->GetDevice(), L"./data/tree13_up.obj", L"./data/leaves.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_13u object.", L"Error", MB_OK);
@@ -521,7 +526,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
-	result = m_Model_14u->Initialize(m_D3D->GetDevice(), L"./data/tree14_up.obj", L"./data/grass.dds");
+	result = m_Model_14u->Initialize(m_D3D->GetDevice(), L"./data/tree14_up.obj", L"./data/leaves.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_14u object.", L"Error", MB_OK);
@@ -533,7 +538,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
-	result = m_Model_15u->Initialize(m_D3D->GetDevice(), L"./data/tree15_up.obj", L"./data/grass.dds");
+	result = m_Model_15u->Initialize(m_D3D->GetDevice(), L"./data/tree15_up.obj", L"./data/leaves.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_15u object.", L"Error", MB_OK);
@@ -545,7 +550,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
-	result = m_Model_16u->Initialize(m_D3D->GetDevice(), L"./data/tree16_up.obj", L"./data/grass.dds");
+	result = m_Model_16u->Initialize(m_D3D->GetDevice(), L"./data/tree16_up.obj", L"./data/leaves.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_16u object.", L"Error", MB_OK);
@@ -557,7 +562,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
-	result = m_Model_17u->Initialize(m_D3D->GetDevice(), L"./data/tree17_up.obj", L"./data/grass.dds");
+	result = m_Model_17u->Initialize(m_D3D->GetDevice(), L"./data/tree17_up.obj", L"./data/leaves.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_17u object.", L"Error", MB_OK);
@@ -569,7 +574,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
-	result = m_Model_18u->Initialize(m_D3D->GetDevice(), L"./data/tree18_up.obj", L"./data/grass.dds");
+	result = m_Model_18u->Initialize(m_D3D->GetDevice(), L"./data/tree18_up.obj", L"./data/leaves.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_18u object.", L"Error", MB_OK);
@@ -581,10 +586,34 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
-	result = m_Model_19u->Initialize(m_D3D->GetDevice(), L"./data/tree19_up.obj", L"./data/grass.dds");
+	result = m_Model_19u->Initialize(m_D3D->GetDevice(), L"./data/tree19_up.obj", L"./data/leaves.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_19u object.", L"Error", MB_OK);
+		return false;
+	}
+
+	m_Model_cable = new ModelClass;
+	if (!m_Model_cable)
+	{
+		return false;
+	}
+	result = m_Model_cable->Initialize(m_D3D->GetDevice(), L"./data/cable.obj", L"./data/leaf.dds"); // ÄÉÀÌºíÄ«·Î ¹Ù²ã¾ß´ï
+	if (!result)
+	{
+		MessageBox(hwnd, L"Could not initialize the model_cable object.", L"Error", MB_OK);
+		return false;
+	}
+
+	m_Model_water = new ModelClass;
+	if (!m_Model_water)
+	{
+		return false;
+	}
+	result = m_Model_water->Initialize(m_D3D->GetDevice(), L"./data/water.obj", L"./data/wa.dds"); // ÅØ½ºÃÄ ¹°·Î ¹Ù²ã¾ß´ï
+	if (!result)
+	{
+		MessageBox(hwnd, L"Could not initialize the model_water object.", L"Error", MB_OK);
 		return false;
 	}
 
@@ -629,6 +658,45 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	m_Light_1->SetDirection(1.0f, 0.0f, 1.0f);
 	m_Light_1->SetSpecularColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_Light_1->SetSpecularPower(32.0f);
+
+	m_Light_2 = new LightClass;
+	if (!m_Light_2)
+	{
+		return false;
+	}
+
+	// Initialize the light object.
+	m_Light_2->SetAmbientColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_Light_2->SetDiffuseColor(0.0f, 0.0f, 1.0f, 1.0f);
+	m_Light_2->SetDirection(1.0f, 1.0f, 1.0f);
+	m_Light_2->SetSpecularColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_Light_2->SetSpecularPower(32.0f);
+
+	m_Light_3 = new LightClass;
+	if (!m_Light_3)
+	{
+		return false;
+	}
+
+	// Initialize the light object.
+	m_Light_3->SetAmbientColor(0.15f, 0.15f, 0.15f, 1.0f);
+	m_Light_3->SetDiffuseColor(0.5f, 0.0f, 0.0f, 1.0f);
+	m_Light_3->SetDirection(1.0f, 1.0f, 1.0f);
+	m_Light_3->SetSpecularColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_Light_3->SetSpecularPower(32.0f);
+
+	m_Light_4 = new LightClass;
+	if (!m_Light_4)
+	{
+		return false;
+	}
+
+	// Initialize the light object.
+	m_Light_4->SetAmbientColor(0.15f, 0.15f, 0.15f, 1.0f);
+	m_Light_4->SetDiffuseColor(0.5f, 0.5f, 0.0f, 1.0f);
+	m_Light_4->SetDirection(1.0f, 1.0f, 1.0f);
+	m_Light_4->SetSpecularColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_Light_4->SetSpecularPower(32.0f);
 
 	// Create the texture shader object.
 	m_TextureShader = new TextureShaderClass;
@@ -952,6 +1020,18 @@ void GraphicsClass::Shutdown()
 		delete m_Model_19u;
 		m_Model_19u = 0;
 	}
+	if (m_Model_cable)
+	{
+		m_Model_cable->Shutdown();
+		delete m_Model_cable;
+		m_Model_cable = 0;
+	}
+	if (m_Model_water)
+	{
+		m_Model_water->Shutdown();
+		delete m_Model_water;
+		m_Model_water = 0;
+	}
 
 	// Release the camera object.
 	if(m_Camera)
@@ -978,6 +1058,21 @@ void GraphicsClass::Shutdown()
 	{
 		delete m_Light_1;
 		m_Light_1 = 0;
+	}
+	if (m_Light_2)
+	{
+		delete m_Light_2;
+		m_Light_2 = 0;
+	}
+	if (m_Light_3)
+	{
+		delete m_Light_3;
+		m_Light_3 = 0;
+	}
+	if (m_Light_4)
+	{
+		delete m_Light_4;
+		m_Light_4 = 0;
 	}
 
 	// Release the light shader object.
@@ -1286,15 +1381,15 @@ bool GraphicsClass::Render(float rotation)
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_3u->GetIndexCount(),
 		worldMatrix, viewMatrix, projectionMatrix,
 		m_Model_3u->GetTexture(),
-		m_Light_1->GetDirection(), m_Light_1->GetAmbientColor(), m_Light_1->GetDiffuseColor(),
-		m_Camera->GetPosition(), m_Light_1->GetSpecularColor(), m_Light_1->GetSpecularPower());
+		m_Light_3->GetDirection(), m_Light_3->GetAmbientColor(), m_Light_3->GetDiffuseColor(),
+		m_Camera->GetPosition(), m_Light_3->GetSpecularColor(), m_Light_3->GetSpecularPower());
 
 	m_Model_4u->Render(m_D3D->GetDeviceContext());
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_4u->GetIndexCount(),
 		worldMatrix, viewMatrix, projectionMatrix,
 		m_Model_4u->GetTexture(),
-		m_Light_1->GetDirection(), m_Light_1->GetAmbientColor(), m_Light_1->GetDiffuseColor(),
-		m_Camera->GetPosition(), m_Light_1->GetSpecularColor(), m_Light_1->GetSpecularPower());
+		m_Light_4->GetDirection(), m_Light_4->GetAmbientColor(), m_Light_4->GetDiffuseColor(),
+		m_Camera->GetPosition(), m_Light_4->GetSpecularColor(), m_Light_4->GetSpecularPower());
 
 	m_Model_5u->Render(m_D3D->GetDeviceContext());
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_5u->GetIndexCount(),
@@ -1314,15 +1409,15 @@ bool GraphicsClass::Render(float rotation)
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_7u->GetIndexCount(),
 		worldMatrix, viewMatrix, projectionMatrix,
 		m_Model_7u->GetTexture(),
-		m_Light_1->GetDirection(), m_Light_1->GetAmbientColor(), m_Light_1->GetDiffuseColor(),
-		m_Camera->GetPosition(), m_Light_1->GetSpecularColor(), m_Light_1->GetSpecularPower());
+		m_Light_3->GetDirection(), m_Light_3->GetAmbientColor(), m_Light_3->GetDiffuseColor(),
+		m_Camera->GetPosition(), m_Light_3->GetSpecularColor(), m_Light_3->GetSpecularPower());
 
 	m_Model_8u->Render(m_D3D->GetDeviceContext());
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_8u->GetIndexCount(),
 		worldMatrix, viewMatrix, projectionMatrix,
 		m_Model_8u->GetTexture(),
-		m_Light_1->GetDirection(), m_Light_1->GetAmbientColor(), m_Light_1->GetDiffuseColor(),
-		m_Camera->GetPosition(), m_Light_1->GetSpecularColor(), m_Light_1->GetSpecularPower());
+		m_Light_4->GetDirection(), m_Light_4->GetAmbientColor(), m_Light_4->GetDiffuseColor(),
+		m_Camera->GetPosition(), m_Light_4->GetSpecularColor(), m_Light_4->GetSpecularPower());
 
 	m_Model_9u->Render(m_D3D->GetDeviceContext());
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_9u->GetIndexCount(),
@@ -1342,8 +1437,8 @@ bool GraphicsClass::Render(float rotation)
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_11u->GetIndexCount(),
 		worldMatrix, viewMatrix, projectionMatrix,
 		m_Model_11u->GetTexture(),
-		m_Light_1->GetDirection(), m_Light_1->GetAmbientColor(), m_Light_1->GetDiffuseColor(),
-		m_Camera->GetPosition(), m_Light_1->GetSpecularColor(), m_Light_1->GetSpecularPower());
+		m_Light_3->GetDirection(), m_Light_3->GetAmbientColor(), m_Light_3->GetDiffuseColor(),
+		m_Camera->GetPosition(), m_Light_3->GetSpecularColor(), m_Light_3->GetSpecularPower());
 
 	m_Model_12u->Render(m_D3D->GetDeviceContext());
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_12u->GetIndexCount(),
@@ -1356,8 +1451,8 @@ bool GraphicsClass::Render(float rotation)
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_13u->GetIndexCount(),
 		worldMatrix, viewMatrix, projectionMatrix,
 		m_Model_13u->GetTexture(),
-		m_Light_1->GetDirection(), m_Light_1->GetAmbientColor(), m_Light_1->GetDiffuseColor(),
-		m_Camera->GetPosition(), m_Light_1->GetSpecularColor(), m_Light_1->GetSpecularPower());
+		m_Light_4->GetDirection(), m_Light_4->GetAmbientColor(), m_Light_4->GetDiffuseColor(),
+		m_Camera->GetPosition(), m_Light_4->GetSpecularColor(), m_Light_4->GetSpecularPower());
 
 	m_Model_14u->Render(m_D3D->GetDeviceContext());
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_14u->GetIndexCount(),
@@ -1377,8 +1472,8 @@ bool GraphicsClass::Render(float rotation)
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_16u->GetIndexCount(),
 		worldMatrix, viewMatrix, projectionMatrix,
 		m_Model_16u->GetTexture(),
-		m_Light_1->GetDirection(), m_Light_1->GetAmbientColor(), m_Light_1->GetDiffuseColor(),
-		m_Camera->GetPosition(), m_Light_1->GetSpecularColor(), m_Light_1->GetSpecularPower());
+		m_Light_4->GetDirection(), m_Light_4->GetAmbientColor(), m_Light_4->GetDiffuseColor(),
+		m_Camera->GetPosition(), m_Light_4->GetSpecularColor(), m_Light_4->GetSpecularPower());
 
 	m_Model_17u->Render(m_D3D->GetDeviceContext());
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_17u->GetIndexCount(),
@@ -1391,8 +1486,8 @@ bool GraphicsClass::Render(float rotation)
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_18u->GetIndexCount(),
 		worldMatrix, viewMatrix, projectionMatrix,
 		m_Model_18u->GetTexture(),
-		m_Light_1->GetDirection(), m_Light_1->GetAmbientColor(), m_Light_1->GetDiffuseColor(),
-		m_Camera->GetPosition(), m_Light_1->GetSpecularColor(), m_Light_1->GetSpecularPower());
+		m_Light_4->GetDirection(), m_Light_4->GetAmbientColor(), m_Light_4->GetDiffuseColor(),
+		m_Camera->GetPosition(), m_Light_4->GetSpecularColor(), m_Light_4->GetSpecularPower());
 
 	m_Model_19u->Render(m_D3D->GetDeviceContext());
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_19u->GetIndexCount(),
@@ -1400,6 +1495,20 @@ bool GraphicsClass::Render(float rotation)
 		m_Model_19u->GetTexture(),
 		m_Light_1->GetDirection(), m_Light_1->GetAmbientColor(), m_Light_1->GetDiffuseColor(),
 		m_Camera->GetPosition(), m_Light_1->GetSpecularColor(), m_Light_1->GetSpecularPower());
+
+	m_Model_cable->Render(m_D3D->GetDeviceContext());
+	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_cable->GetIndexCount(),
+		worldMatrix, viewMatrix, projectionMatrix,
+		m_Model_cable->GetTexture(),
+		m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
+		m_Camera->GetPosition(), m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
+
+	m_Model_water->Render(m_D3D->GetDeviceContext());
+	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_water->GetIndexCount(),
+		worldMatrix, viewMatrix, projectionMatrix,
+		m_Model_water->GetTexture(),
+		m_Light_2->GetDirection(), m_Light_2->GetAmbientColor(), m_Light_2->GetDiffuseColor(),
+		m_Camera->GetPosition(), m_Light_2->GetSpecularColor(), m_Light_2->GetSpecularPower());
 	
 	if(!result)
 	{
