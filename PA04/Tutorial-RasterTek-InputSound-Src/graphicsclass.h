@@ -58,45 +58,13 @@ private:
 
 private:
 	
-	ModelClass* m_Model;
+	ModelClass* m_Model_mount;
 	ModelClass* m_Model_1;
 	ModelClass* m_Model_2;
 	ModelClass* m_Model_3;
 	ModelClass* m_Model_4;
 	ModelClass* m_Model_5;
 	ModelClass* m_Model_6;
-	ModelClass* m_Model_7;
-	ModelClass* m_Model_8;
-	ModelClass* m_Model_9;
-	ModelClass* m_Model_10;
-	ModelClass* m_Model_11;
-	ModelClass* m_Model_12;
-	ModelClass* m_Model_13;
-	ModelClass* m_Model_14;
-	ModelClass* m_Model_15;
-	ModelClass* m_Model_16;
-	ModelClass* m_Model_17;
-	ModelClass* m_Model_18;
-	ModelClass* m_Model_19;
-	ModelClass* m_Model_1u;
-	ModelClass* m_Model_2u;
-	ModelClass* m_Model_3u;
-	ModelClass* m_Model_4u;
-	ModelClass* m_Model_5u;
-	ModelClass* m_Model_6u;
-	ModelClass* m_Model_7u;
-	ModelClass* m_Model_8u;
-	ModelClass* m_Model_9u;
-	ModelClass* m_Model_10u;
-	ModelClass* m_Model_11u;
-	ModelClass* m_Model_12u;
-	ModelClass* m_Model_13u;
-	ModelClass* m_Model_14u;
-	ModelClass* m_Model_15u;
-	ModelClass* m_Model_16u;
-	ModelClass* m_Model_17u;
-	ModelClass* m_Model_18u;
-	ModelClass* m_Model_19u;
 	ModelClass* m_Model_cable;
 	ModelClass* m_Model_water;
 	ModelClass* m_Model_back;
