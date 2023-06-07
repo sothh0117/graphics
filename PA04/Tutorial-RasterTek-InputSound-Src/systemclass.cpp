@@ -106,6 +106,7 @@ bool SystemClass::Initialize()
 	}
 
 	// Create the sound object.
+	/*
 	m_Sound = new SoundClass;
 	if (!m_Sound)
 	{
@@ -119,6 +120,7 @@ bool SystemClass::Initialize()
 		MessageBox(m_hwnd, L"Could not initialize Direct Sound.", L"Error", MB_OK);
 		return false;
 	}
+	*/
 
 	return true;
 }
@@ -164,6 +166,7 @@ void SystemClass::Shutdown()
 		m_Fps = 0;
 	}
 
+	/*
 	// Release the sound object.
 	if (m_Sound)
 	{
@@ -171,6 +174,7 @@ void SystemClass::Shutdown()
 		delete m_Sound;
 		m_Sound = 0;
 	}
+	*/
 
 	// Shutdown the window.
 	ShutdownWindows();
@@ -312,6 +316,11 @@ bool SystemClass::Frame()
 		m_Graphics->isZbuffer = TRUE;
 		m_Graphics->Render(rotation);
 	}
+	if (m_Input->m_keyboardState[DIK_P] & 0x80)
+	{
+		m_Graphics->isZbuffer = FALSE;
+		m_Graphics->Render(rotation);
+	}
 	return true;
 }
 
@@ -379,8 +388,8 @@ void SystemClass::InitializeWindows(int& screenWidth, int& screenHeight)
 	else
 	{
 		// If windowed then set it to 800x600 resolution.
-		screenWidth  = 800;
-		screenHeight = 600;
+		screenWidth  = 1024;
+		screenHeight = 768;
 
 		// Place the window in the middle of the screen.
 		posX = (GetSystemMetrics(SM_CXSCREEN) - screenWidth)  / 2;

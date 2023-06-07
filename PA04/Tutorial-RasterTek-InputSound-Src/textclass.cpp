@@ -479,14 +479,15 @@ bool TextClass::SetMousePosition(int mouseX, int mouseY, ID3D11DeviceContext* de
 {
 	char tempString[16];
 	char mouseString[16];
+	char subString[16];
 	bool result;
 
 
 	// Convert the mouseX integer to string format.
-	_itoa_s(mouseX, tempString, 10);
+	_itoa_s(42, tempString, 10);
 
 	// Setup the mouseX string.
-	strcpy_s(mouseString, "Mouse X = ");
+	strcpy_s(mouseString, "num of objects = ");
 	strcat_s(mouseString, tempString);
 
 	// Update the sentence vertex buffer with the new string information.
@@ -497,11 +498,13 @@ bool TextClass::SetMousePosition(int mouseX, int mouseY, ID3D11DeviceContext* de
 	}
 
 	// Convert the mouseY integer to string format.
-	_itoa_s(mouseY, tempString, 10);
+	_itoa_s(1024, tempString, 10);
+	_itoa_s(768, subString, 10);
 
 	// Setup the mouseY string.
-	strcpy_s(mouseString, "Mouse Y = ");
+	strcpy_s(mouseString, "screen resolution = ");
 	strcat_s(mouseString, tempString);
+	strcat_s(mouseString, subString);
 
 	// Update the sentence vertex buffer with the new string information.
 	result = UpdateSentence(m_sentence4, mouseString, 20, 80, 1.0f, 1.0f, 1.0f, deviceContext);
@@ -509,6 +512,7 @@ bool TextClass::SetMousePosition(int mouseX, int mouseY, ID3D11DeviceContext* de
 	{
 		return false;
 	}
+
 
 	return true;
 }

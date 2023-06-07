@@ -600,7 +600,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
-	result = m_Model_cable->Initialize(m_D3D->GetDevice(), L"./data/cable.obj", L"./data/leaf.dds"); // ÄÉÀÌºíÄ«·Î ¹Ù²ã¾ß´ï
+	result = m_Model_cable->Initialize(m_D3D->GetDevice(), L"./data/cable.obj", L"./data/cable.dds"); // ÄÉÀÌºíÄ«·Î ¹Ù²ã¾ß´ï
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model_cable object.", L"Error", MB_OK);
@@ -1209,7 +1209,7 @@ bool GraphicsClass::Frame(int fps, int cpu)
 
 bool GraphicsClass::Render(float rotation)
 {
-	XMMATRIX worldMatrix, viewMatrix, projectionMatrix, orthoMatrix;
+	XMMATRIX worldMatrix, viewMatrix, projectionMatrix, orthoMatrix, translateMatrix;
 	bool result;
 	
 	// Clear the buffers to begin the scene.
@@ -1226,26 +1226,29 @@ bool GraphicsClass::Render(float rotation)
 	m_D3D->GetOrthoMatrix(orthoMatrix);
 
 	// Turn off the Z buffer to begin all 2D rendering.
-	if (isZbuffer) {
+	/*if (isZbuffer) {
 		m_D3D->TurnZBufferOff();
 	}
-	else m_D3D->TurnZBufferOn();
+	else m_D3D->TurnZBufferOn();*/
+	m_D3D->TurnZBufferOn();
 	
 
 	// Put the bitmap vertex and index buffers on the graphics pipeline to prepare them for drawing.
-	result = m_Bitmap->Render(m_D3D->GetDeviceContext(), 0, 0);
-	if (!result)
+	if (!isZbuffer)
 	{
-		return false;
-	}
+		result = m_Bitmap->Render(m_D3D->GetDeviceContext(), 100, 100);
+		if (!result)
+		{
+			return false;
+		}
 
-	// Render the bitmap with the texture shader.
-	result = m_TextureShader->Render(m_D3D->GetDeviceContext(), m_Bitmap->GetIndexCount(), worldMatrix, viewMatrix, orthoMatrix, m_Bitmap->GetTexture());
-	if (!result)
-	{
-		return false;
+		// Render the bitmap with the texture shader.
+		result = m_TextureShader->Render(m_D3D->GetDeviceContext(), m_Bitmap->GetIndexCount(), worldMatrix, viewMatrix, orthoMatrix, m_Bitmap->GetTexture());
+		if (!result)
+		{
+			return false;
+		}
 	}
-
 	// Turn on the alpha blending before rendering the text.
 	m_D3D->TurnOnAlphaBlending();
 
@@ -1539,12 +1542,12 @@ bool GraphicsClass::Render(float rotation)
 		m_Light_1->GetDirection(), m_Light_1->GetAmbientColor(), m_Light_1->GetDiffuseColor(),
 		m_Camera->GetPosition(), m_Light_1->GetSpecularColor(), m_Light_1->GetSpecularPower());
 
-	m_Model_cable->Render(m_D3D->GetDeviceContext());
-	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_cable->GetIndexCount(),
+	m_Model_back->Render(m_D3D->GetDeviceContext());
+	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_back->GetIndexCount(),
 		worldMatrix, viewMatrix, projectionMatrix,
-		m_Model_cable->GetTexture(),
-		m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
-		m_Camera->GetPosition(), m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
+		m_Model_back->GetTexture(),
+		m_Light_5->GetDirection(), m_Light_5->GetAmbientColor(), m_Light_5->GetDiffuseColor(),
+		m_Camera->GetPosition(), m_Light_5->GetSpecularColor(), m_Light_5->GetSpecularPower());
 
 	m_Model_water->Render(m_D3D->GetDeviceContext());
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_water->GetIndexCount(),
@@ -1553,12 +1556,24 @@ bool GraphicsClass::Render(float rotation)
 		m_Light_2->GetDirection(), m_Light_2->GetAmbientColor(), m_Light_2->GetDiffuseColor(),
 		m_Camera->GetPosition(), m_Light_2->GetSpecularColor(), m_Light_2->GetSpecularPower());
 
-	m_Model_back->Render(m_D3D->GetDeviceContext());
-	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_back->GetIndexCount(),
+	m_Model_cable->Render(m_D3D->GetDeviceContext());
+	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_cable->GetIndexCount(),
 		worldMatrix, viewMatrix, projectionMatrix,
-		m_Model_back->GetTexture(),
-		m_Light_5->GetDirection(), m_Light_5->GetAmbientColor(), m_Light_5->GetDiffuseColor(),
-		m_Camera->GetPosition(), m_Light_5->GetSpecularColor(), m_Light_5->GetSpecularPower());
+		m_Model_cable->GetTexture(),
+		m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
+		m_Camera->GetPosition(), m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
+
+	worldMatrix = XMMatrixRotationY(rotation);
+	translateMatrix = XMMatrixTranslation(0.0f, 30.0f, 0.0f);
+	worldMatrix = XMMatrixMultiply(worldMatrix, translateMatrix);
+
+
+	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_cable->GetIndexCount(),
+		worldMatrix, viewMatrix, projectionMatrix,
+		m_Model_cable->GetTexture(),
+		m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
+		m_Camera->GetPosition(), m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
+	
 	
 	if(!result)
 	{
