@@ -1562,17 +1562,6 @@ bool GraphicsClass::Render(float rotation)
 		m_Model_cable->GetTexture(),
 		m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
 		m_Camera->GetPosition(), m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
-
-	worldMatrix = XMMatrixRotationY(rotation);
-	translateMatrix = XMMatrixTranslation(0.0f, 30.0f, 0.0f);
-	worldMatrix = XMMatrixMultiply(worldMatrix, translateMatrix);
-
-
-	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_cable->GetIndexCount(),
-		worldMatrix, viewMatrix, projectionMatrix,
-		m_Model_cable->GetTexture(),
-		m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
-		m_Camera->GetPosition(), m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
 	
 	
 	if(!result)
