@@ -49,6 +49,7 @@ GraphicsClass::GraphicsClass()
 	m_Model_19u = 0;
 	m_Model_cable = 0;
 	m_Model_water = 0;
+	m_Model_back = 0;
 	
 
 	m_LightShader = 0;
@@ -57,6 +58,7 @@ GraphicsClass::GraphicsClass()
 	m_Light_2 = 0;
 	m_Light_3 = 0;
 	m_Light_4 = 0;
+	m_Light_5 = 0;
 
 	m_TextureShader = 0;
 	m_Bitmap = 0;
@@ -617,6 +619,18 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 		return false;
 	}
 
+	m_Model_back = new ModelClass;
+	if (!m_Model_back)
+	{
+		return false;
+	}
+	result = m_Model_back->Initialize(m_D3D->GetDevice(), L"./data/background.obj", L"./data/sky.dds"); // 텍스쳐 하늘로
+	if (!result)
+	{
+		MessageBox(hwnd, L"Could not initialize the model_back object.", L"Error", MB_OK);
+		return false;
+	}
+
 	// Create the light shader object.
 	m_LightShader = new LightShaderClass;
 	if (!m_LightShader)
@@ -698,6 +712,19 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	m_Light_4->SetSpecularColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_Light_4->SetSpecularPower(32.0f);
 
+	m_Light_5 = new LightClass;
+	if (!m_Light_4)
+	{
+		return false;
+	}
+
+	// Initialize the light object.
+	m_Light_5->SetAmbientColor(0.5f, 0.5f, 0.5f, 1.0f);
+	m_Light_5->SetDiffuseColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_Light_5->SetDirection(1.0f, 0.0f, 0.0f);
+	m_Light_5->SetSpecularColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_Light_5->SetSpecularPower(32.0f);
+
 	// Create the texture shader object.
 	m_TextureShader = new TextureShaderClass;
 	if (!m_TextureShader)
@@ -722,7 +749,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Initialize the bitmap object.
-	result = m_Bitmap->Initialize(m_D3D->GetDevice(), screenWidth, screenHeight, L"./data/grass.dds", 256, 256);
+	result = m_Bitmap->Initialize(m_D3D->GetDevice(), screenWidth, screenHeight, L"./data/bit.dds", 512, 512);
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the bitmap object.", L"Error", MB_OK);
@@ -1033,6 +1060,13 @@ void GraphicsClass::Shutdown()
 		m_Model_water = 0;
 	}
 
+	if (m_Model_back)
+	{
+		m_Model_back->Shutdown();
+		delete m_Model_back;
+		m_Model_back = 0;
+	}
+
 	// Release the camera object.
 	if(m_Camera)
 	{
@@ -1073,6 +1107,11 @@ void GraphicsClass::Shutdown()
 	{
 		delete m_Light_4;
 		m_Light_4 = 0;
+	}
+	if (m_Light_5)
+	{
+		delete m_Light_5;
+		m_Light_5 = 0;
 	}
 
 	// Release the light shader object.
@@ -1187,10 +1226,14 @@ bool GraphicsClass::Render(float rotation)
 	m_D3D->GetOrthoMatrix(orthoMatrix);
 
 	// Turn off the Z buffer to begin all 2D rendering.
-	m_D3D->TurnZBufferOff();
+	if (isZbuffer) {
+		m_D3D->TurnZBufferOff();
+	}
+	else m_D3D->TurnZBufferOn();
+	
 
 	// Put the bitmap vertex and index buffers on the graphics pipeline to prepare them for drawing.
-	result = m_Bitmap->Render(m_D3D->GetDeviceContext(), 200, 200);
+	result = m_Bitmap->Render(m_D3D->GetDeviceContext(), 0, 0);
 	if (!result)
 	{
 		return false;
@@ -1509,6 +1552,13 @@ bool GraphicsClass::Render(float rotation)
 		m_Model_water->GetTexture(),
 		m_Light_2->GetDirection(), m_Light_2->GetAmbientColor(), m_Light_2->GetDiffuseColor(),
 		m_Camera->GetPosition(), m_Light_2->GetSpecularColor(), m_Light_2->GetSpecularPower());
+
+	m_Model_back->Render(m_D3D->GetDeviceContext());
+	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model_back->GetIndexCount(),
+		worldMatrix, viewMatrix, projectionMatrix,
+		m_Model_back->GetTexture(),
+		m_Light_5->GetDirection(), m_Light_5->GetAmbientColor(), m_Light_5->GetDiffuseColor(),
+		m_Camera->GetPosition(), m_Light_5->GetSpecularColor(), m_Light_5->GetSpecularPower());
 	
 	if(!result)
 	{

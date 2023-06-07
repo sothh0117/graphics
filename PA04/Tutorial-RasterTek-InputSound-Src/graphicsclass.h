@@ -41,20 +41,23 @@ public:
 	void Shutdown();
 	bool Frame();
 	bool Frame(int, int);
-
+	bool Render(float);
+	bool isZbuffer = false;
 
 	LightClass* m_Light;
 	LightClass* m_Light_1;
 	LightClass* m_Light_2;
 	LightClass* m_Light_3;
 	LightClass* m_Light_4;
+	LightClass* m_Light_5;
 	CameraClass* m_Camera;
-
-private:
-	bool Render(float);
-
-private:
 	D3DClass* m_D3D;
+
+private:
+	
+
+private:
+	
 	ModelClass* m_Model;
 	ModelClass* m_Model_1;
 	ModelClass* m_Model_2;
@@ -96,6 +99,7 @@ private:
 	ModelClass* m_Model_19u;
 	ModelClass* m_Model_cable;
 	ModelClass* m_Model_water;
+	ModelClass* m_Model_back;
 
 
 	LightShaderClass* m_LightShader;

@@ -232,6 +232,14 @@ bool SystemClass::Frame()
 	bool result;
 	int mouseX, mouseY;
 	float speed = 15.0f;
+	static float rotation = 0.0f;
+
+	// Update the rotation variable each frame.
+	rotation += (float)XM_PI * 0.005f;
+	if (rotation > 360.0f)
+	{
+		rotation -= 360.0f;
+	}
 
 	m_Timer->Frame();
 	m_Fps->Frame();
@@ -298,6 +306,11 @@ bool SystemClass::Frame()
 	{
 		position_camera_y -= 1.0f;
 		m_Graphics->m_Camera->SetPosition(position_camera_x, position_camera_y, position_camera_z);
+	}
+	if (m_Input->m_keyboardState[DIK_R] & 0x80)
+	{
+		m_Graphics->isZbuffer = TRUE;
+		m_Graphics->Render(rotation);
 	}
 	return true;
 }
